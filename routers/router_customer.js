@@ -5,26 +5,37 @@ const {Customer} = require('../models/customer')
 const {Product,Order,Item}= require('../models/order')
 
 // customers controller 
-const {putCustomers,getCustomers}= require('../controllers/customerController')
-
+const {putCustomers,getCustomers,postCustomerIdOrder,getCustomerIdOrders}= require('../controllers/customerController')
 
 
 
 // update by the customers 
 router.put('/:id', putCustomers)
 
-
 // get  all customers 
-
 router.get('',getCustomers)	 
 
 
+// orders related endpoints
+
+router.post('/:id/orders/',)
+router.post('/:id/orders/',postCustomerIdOrder)
+router.get('/:id/orders/',getCustomerIdOrders)
 
 
-// orders related stuff
 
 
-		
+// items related endpoints
+
+router.get('/:id/orders/:id_order/items')
+
+
+
+
+
+
+
+		/*
 // test
 router.post('/:id/orders/', async (req, res) => {
   try {
@@ -83,6 +94,6 @@ router.post('/:id/orders/', async (req, res) => {
 });
 
 
-
+*/
 
 module.exports = router

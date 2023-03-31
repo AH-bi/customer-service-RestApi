@@ -44,7 +44,7 @@ const deleteCompanies= async (req, res) => {
       console.log(id)
       // delete a customer by id 
       await Company.findByIdAndDelete(id);
-      res.status(204).json({message:'Company delted successfully'});
+      res.status(200).json({message:'Company delted successfully'});
 
 } catch (error) {
 console.error(error);

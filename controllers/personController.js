@@ -47,7 +47,7 @@ const getPersons = async (req, res) => {
             const id  = req.params.id
             // delete a customer by id 
             await Person.findByIdAndDelete(id)
-            res.status(204).json({message:'Person delted successfully'});
+            res.status(200).json({message:'Person deleted successfully'});
       
       } 
   catch (error) {

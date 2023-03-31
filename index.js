@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/customers2ss' ,{ useNewUrlParser: tr
 
 
 // import routers 
-const router = require('./routers/router')
+//const router = require('./routers/router')
 const productsRouter = require( './routers/router_product')
 const companyRouter = require ('./routers/router_companies')
 const personRouter = require ('./routers/router_person')
@@ -33,11 +33,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // routers
+//app.use('',)
 app.use('/products',productsRouter)
 app.use('/companies',companyRouter)
 app.use('/persons',personRouter)
 app.use('/customers',customerRouter)
-//app.use('',)
 
 
 
