@@ -194,13 +194,10 @@ const deleteCustomerIdOrderId = async (req,res) => {
 
   try
   {
-          // Costumer ID
-          const customerid = req.params.customerid ;
-          
           // Order ID 
           const orderid = req.params.orderid ;
           const order = await Order.findByIdAndDelete(orderid)
-          
+      
           // Delete the items and return the quantity to the product  
           orderItems = order.items 
           for (const item of orderItems)

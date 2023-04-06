@@ -56,4 +56,28 @@ const deltePorducts = async(req,res)=>
     }
     
     
-module.exports={postPrdocuts,getProducts,deltePorducts}
+
+
+
+const updateProductsId = async(req,res) =>
+{        console.log("test")
+
+    try{
+        const productId = req.params.productid 
+        const product = await Product.findById(productId)
+        const {price , quantity }= req.body
+
+        product.price = price 
+        product.quantity = quantity
+        await product.save()
+        return res.status(200).json({
+            message:"Product updated"
+        })
+    }
+            catch (error)
+            {
+                console.log(error.message)
+                res.status(500).json({message: "Internal server error"})
+            }
+}
+module.exports={postPrdocuts,getProducts,deltePorducts,updateProductsId}

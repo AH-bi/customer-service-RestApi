@@ -31,8 +31,7 @@ const customerRouter = require ('./routers/router_customer')
 // parse application/json request bodies
 app.use(bodyParser.json());
 
-// parse application/x-www-form-urlencoded request bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 
