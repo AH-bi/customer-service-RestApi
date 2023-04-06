@@ -10,8 +10,15 @@ const app = express()
 const port = 3000
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost:27017/customers2ss' ,{ useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27000/customers2ss' ,{ useNewUrlParser: true })
 
+mongoose.connection.on('error',(error)=>{
+    console.log(error.message)
+})
+
+mongoose.connection.on('connected',()=>{
+    console.log("connection established")
+})
 
 // import routers 
 //const router = require('./routers/router')
