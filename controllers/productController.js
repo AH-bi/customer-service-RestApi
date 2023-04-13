@@ -1,5 +1,5 @@
 
-const {Product} = require ("../models/order") 
+const {Product} = require ("../models/product") 
 
 const postPrdocuts =async(req,res) =>
 {
@@ -12,7 +12,7 @@ const {name,price,quantity}=req.body
         quantity
     })
     const data = await product.save()
-    res.status(200).json(data)
+    res.status(201).json(data)
     
 }
 catch(error)
@@ -43,14 +43,14 @@ const deltePorducts = async(req,res)=>
 {
     try
     {
-    const {id}  = req.params.id
-    
-    await Product.findByIdAndDelte(id)
-    res.status(200).json({message:"deleted successfully"})
+        const productId  = req.params.productid
+        await Product.findByIdAndDelete(productId)
+        res.status(204).json({message:"deleted successfully"})
     }
     catch(error)
     {
-    res.status(404).json({message:"Product not found"})
+        console.log(error.message)
+        res.status(500).json({message:"Internal server error"})
     }
     
     }
@@ -63,8 +63,8 @@ const updateProductsId = async(req,res) =>
 {        console.log("test")
 
     try{
-        const productId = req.params.productid 
-        const product = await Product.findById(productId)
+        const product = req.product
+        
         const {price , quantity }= req.body
 
         product.price = price 
@@ -74,10 +74,10 @@ const updateProductsId = async(req,res) =>
             message:"Product updated"
         })
     }
-            catch (error)
-            {
-                console.log(error.message)
-                res.status(500).json({message: "Internal server error"})
-            }
+    catch (error)
+    {
+        console.log(error.message)
+        res.status(500).json({message: "Internal server error"})
+    }
 }
 module.exports={postPrdocuts,getProducts,deltePorducts,updateProductsId}

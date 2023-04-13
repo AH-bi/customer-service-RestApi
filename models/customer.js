@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
+
 // customer schema 
+
 const customerSchema = new mongoose.Schema({
   phone: {
     type: String,
-    required: true,
+    required: true
   },
   address: {
     type: String,
@@ -38,6 +40,7 @@ const personSchema = new mongoose.Schema({
     required: true,
   },
 });
+
 
 const Customer = mongoose.model('Customer', customerSchema);
 

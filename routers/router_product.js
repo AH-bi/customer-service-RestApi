@@ -5,10 +5,13 @@ const router = express.Router();
 const {postPrdocuts,getProducts,deltePorducts,updateProductsId} = require ('../controllers/productController')
 
 
+// middleware 
+const {authenticateProductId}= require('../middleware/middleware')
+
 router.get('', getProducts);
 router.post('',postPrdocuts);
-router.delete('/:id',deltePorducts);
-router.put('/:productid', updateProductsId)
+router.delete('/:productid',authenticateProductId,deltePorducts);
+router.put('/:productid', authenticateProductId,updateProductsId)
 
 
 

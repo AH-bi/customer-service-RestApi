@@ -22,11 +22,12 @@ mongoose.connection.on('connected',()=>{
 
 // import routers 
 //const router = require('./routers/router')
-const productsRouter = require( './routers/router_product')
+const productRouter = require( './routers/router_product')
 const companyRouter = require ('./routers/router_companies')
 const personRouter = require ('./routers/router_person')
 const customerRouter = require ('./routers/router_customer')
-
+const orderRouter = require ('./routers/router-order');
+const itemRouter = require ('./routers/router_item')
 
 // parse application/json request bodies
 app.use(bodyParser.json());
@@ -40,10 +41,12 @@ app.use(bodyParser.json());
 
 // routers
 //app.use('',)
-app.use('/products',productsRouter)
+app.use('/products',productRouter)
 app.use('/companies',companyRouter)
 app.use('/persons',personRouter)
 app.use('/customers',customerRouter)
+app.use('/customers',itemRouter)
+app.use('/customers',orderRouter)
 
 
 
